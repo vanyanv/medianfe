@@ -1,4 +1,5 @@
 import React from 'react';
+import ArticleLoader from './ArticleLoader';
 
 {
   authorId: null;
@@ -37,7 +38,7 @@ export default function Post({ post, isLoading }: PostTypes) {
     day: 'numeric',
   });
 
-  if (isLoading) return <div>Loading..</div>;
+  if (isLoading) return <ArticleLoader />;
 
   return (
     <>

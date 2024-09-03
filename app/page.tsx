@@ -5,7 +5,7 @@ import getArticles from './utils/getArticles';
 import Post from './componenets/Post';
 import Navbar from './componenets/Navbar';
 import LoginModal from './componenets/LoginModal';
-
+import ArticleLoader from './componenets/ArticleLoader';
 type Post = {
   authorId: string | null;
   body: string;
@@ -25,11 +25,11 @@ export default function Home() {
   });
 
   return (
-    <div className='mx-auto max-w-7xl sm:px-6 lg:px-8 bg-white'>
+    <div className='mx-auto h-full max-w-7xl sm:px-6 lg:px-8 bg-white'>
       <Navbar setOpen={setOpen} />
       <div className='mx-auto max-w-3xl'>
         <div className='mx-auto max-w-7xl px-6 lg:px-8'>
-          <div className='mx-auto max-w-2xl '>
+          <div className='mx-auto max-w-2xl'>
             <h2 className='text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl text-center'>
               Latest Articles
             </h2>
@@ -37,10 +37,14 @@ export default function Home() {
               Explore our collection of insightful articles.
             </p>
             {open && <LoginModal open={open} setOpen={setOpen} />}
-            <div className='mt-10 space-y-16 border-t border-gray-200 pt-10 sm:mt-16 sm:pt-16 bg-white'>
-              {data?.map((post: Post) => (
-                <Post key={data.id} post={post} isLoading={isLoading} />
-              ))}
+            <div className='mx-auto h-full max-w-7xl mt-10 space-y-16 border-t border-gray-200 pt-10 sm:mt-16 sm:pt-16 bg-white'>
+              {isLoading ? (
+                <ArticleLoader /> // Use a skeleton loader or any placeholder
+              ) : (
+                data?.map((post: Post) => (
+                  <Post key={post.id} post={post} isLoading={isLoading} />
+                ))
+              )}
             </div>
           </div>
         </div>
