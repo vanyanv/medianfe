@@ -4,8 +4,9 @@ import { useQuery } from '@tanstack/react-query';
 import getArticles from './utils/getArticles';
 import Post from './componenets/Post';
 import Navbar from './componenets/Navbar';
-import LoginModal from './componenets/LoginModal';
+import Modal from './componenets/Modal';
 import ArticleLoader from './componenets/ArticleLoader';
+import Login from './componenets/Login';
 type Post = {
   authorId: string | null;
   body: string;
@@ -36,7 +37,11 @@ export default function Home() {
             <p className='mt-2 text-lg leading-8 text-gray-600 text-center'>
               Explore our collection of insightful articles.
             </p>
-            {open && <LoginModal open={open} setOpen={setOpen} />}
+            {open && (
+              <Modal open={open} setOpen={setOpen}>
+                <Login />
+              </Modal>
+            )}
             <div className='mx-auto h-full max-w-7xl mt-10 space-y-16 border-t border-gray-200 pt-10 sm:mt-16 sm:pt-16 bg-white'>
               {isLoading ? (
                 <ArticleLoader /> // Use a skeleton loader or any placeholder
