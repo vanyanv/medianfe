@@ -7,6 +7,7 @@ import Navbar from './componenets/Navbar';
 import Modal from './componenets/Modal';
 import ArticleLoader from './componenets/ArticleLoader';
 import Login from './componenets/Login';
+import PostABlog from './componenets/PostABlog';
 
 type Post = {
   authorId: string | null;
@@ -20,15 +21,16 @@ type Post = {
 };
 
 export default function Home() {
-  const [open, setOpen] = useState(false);
-  const { data, isLoading, isError } = useQuery({
+  const [loginModalOpen, setLoginModalOpen] = useState(false);
+  const [postModalOpen, setPostModalOpen] = useState(false);
+  const { data, isLoading } = useQuery({
     queryFn: getArticles,
     queryKey: ['articles'],
   });
 
   return (
     <div className='min-h-screen bg-gradient-to-b from-blue-50 to-blue-100 text-gray-800'>
-      <Navbar setOpen={setOpen} />
+      <Navbar setOpen={setLoginModalOpen} />
       <header className='text-center py-12'>
         <h1 className='text-5xl font-extrabold text-blue-900'>
           Welcome to OwlBlog
@@ -37,20 +39,26 @@ export default function Home() {
           Explore articles crafted for wisdom seekers.
         </p>
         <button
-          onClick={() => setOpen(true)}
+          onClick={() => setPostModalOpen(true)}
           className='mt-8 px-6 py-3 bg-blue-600 text-white rounded-full hover:bg-blue-700 transition-all duration-200'
         >
           Add New Post
         </button>
       </header>
 
-      {open && (
-        <Modal open={open} setOpen={setOpen}>
+      {loginModalOpen && (
+        <Modal open={loginModalOpen} setOpen={setLoginModalOpen}>
           <Login />
         </Modal>
       )}
 
-      <div className='container mx-auto mt-10 space-y-16 px-4'>
+      {postModalOpen && (
+        <Modal open={postModalOpen} setOpen={setPostModalOpen}>
+          <PostABlog />
+        </Modal>
+      )}
+
+      <div className='flex flex-col items-center justify-center container mx-auto mt-10 space-y-16 px-4'>
         <h2 className='text-3xl font-bold text-blue-900 text-center'>
           Latest Articles
         </h2>
