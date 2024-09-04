@@ -1,36 +1,47 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# 📚 OwlBlog
 
-## Getting Started
+Welcome to **OwlBlog**, a modern and dynamic blogging platform.
 
-First, run the development server:
+## 🚀 Technologies Used
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+### Frontend
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- Next.js
+- React
+- TypeScript
+- Tailwind CSS
+- Framer Motion
+- React Query
+- Zod
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Backend
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+- Nest.js
 
-## Learn More
+## 📂 Project Structure
 
-To learn more about Next.js, take a look at the following resources:
+- **Components**: The building blocks of the UI, including reusable elements like modals, posts, and loaders.
+- **Pages**: Organized as per Next.js conventions, each page represents a route in the application.
+- **Utils**: Contains utility functions that simplify common tasks, such as fetching data from APIs.
+- **Styles**: Tailwind CSS is used for styling, ensuring a consistent and responsive design across the application.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 🛠️ Development Scripts
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+- **`dev`**: Starts the development server with Next.js.
+- **`build`**: Builds the project for production, optimizing it for deployment.
+- **`start`**: Starts the production server after building the project.
+- **`lint`**: Runs ESLint to ensure code quality and consistency.
 
-## Deploy on Vercel
+## 📝 About the Project
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+**Medianfe** is a blog platform designed for those who seek wisdom through words. It features a clean and responsive design, with smooth animations and an intuitive user interface. The platform allows users to explore a variety of articles and add new posts with ease.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+### Key Features:
+
+- **Dynamic Modals**: Separate, independently controlled modals for login and post creation, ensuring a smooth user experience.
+- **Skeleton Loaders**: Custom-designed loaders that match the exact layout of the posts, providing a cohesive and visually appealing experience during data loading.
+- **Responsive Design**: The application is fully responsive, offering a great user experience on both desktop and mobile devices.
+
+## 🧑‍💻 Contributing
+
+Contributions are welcome! If you'd like to contribute, please fork the repository and create a pull request. Make sure to follow the coding standards and run `lint` before submitting your changes.

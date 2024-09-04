@@ -5,12 +5,12 @@ export default function PostABlog() {
     e.preventDefault();
 
     const formData = new FormData();
-    
+    formData.get('title');
   };
   return (
     <form
       className='max-w-xl mx-auto mt-10 p-6 bg-white rounded-lg shadow-md space-y-6'
-      //   onSubmit={handleSubmit}
+      onSubmit={handleSubmit}
     >
       <h2 className='text-2xl font-bold text-blue-900 text-center'>
         Create New Article
@@ -24,10 +24,9 @@ export default function PostABlog() {
           type='text'
           id='title'
           name='title'
-          //   value={formData.title}
-          //   onChange={handleChange}
           className='mt-1 p-2 border border-gray-300 rounded-md'
           required
+          maxLength={100}
         />
       </div>
 
@@ -39,8 +38,6 @@ export default function PostABlog() {
           type='text'
           id='description'
           name='description'
-          //   value={formData.description}
-          //   onChange={handleChange}
           className='mt-1 p-2 border border-gray-300 rounded-md'
         />
       </div>
@@ -52,8 +49,6 @@ export default function PostABlog() {
         <textarea
           id='body'
           name='body'
-          //   value={formData.body}
-          //   onChange={handleChange}
           className='mt-1 p-2 border border-gray-300 rounded-md'
           rows={6}
           required
@@ -65,8 +60,6 @@ export default function PostABlog() {
           type='checkbox'
           id='published'
           name='published'
-          //   checked={formData.published}
-          //   onChange={handleChange}
           className='mr-2'
         />
         <label htmlFor='published' className='text-blue-900 font-semibold'>
