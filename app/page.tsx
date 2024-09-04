@@ -7,6 +7,7 @@ import Navbar from './componenets/Navbar';
 import Modal from './componenets/Modal';
 import ArticleLoader from './componenets/ArticleLoader';
 import Login from './componenets/Login';
+
 type Post = {
   authorId: string | null;
   body: string;
@@ -26,33 +27,40 @@ export default function Home() {
   });
 
   return (
-    <div className='mx-auto h-full max-w-7xl sm:px-6 lg:px-8 bg-white'>
+    <div className='min-h-screen bg-gradient-to-b from-blue-50 to-blue-100 text-gray-800'>
       <Navbar setOpen={setOpen} />
-      <div className='mx-auto max-w-3xl'>
-        <div className='mx-auto max-w-7xl px-6 lg:px-8'>
-          <div className='mx-auto max-w-2xl'>
-            <h2 className='text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl text-center'>
-              Latest Articles
-            </h2>
-            <p className='mt-2 text-lg leading-8 text-gray-600 text-center'>
-              Explore our collection of insightful articles.
-            </p>
-            {open && (
-              <Modal open={open} setOpen={setOpen}>
-                <Login />
-              </Modal>
-            )}
-            <div className='mx-auto h-full max-w-7xl mt-10 space-y-16 border-t border-gray-200 pt-10 sm:mt-16 sm:pt-16 bg-white'>
-              {isLoading ? (
-                <ArticleLoader /> // Use a skeleton loader or any placeholder
-              ) : (
-                data?.map((post: Post) => (
-                  <Post key={post.id} post={post} isLoading={isLoading} />
-                ))
-              )}
-            </div>
-          </div>
-        </div>
+      <header className='text-center py-12'>
+        <h1 className='text-5xl font-extrabold text-blue-900'>
+          Welcome to OwlBlog
+        </h1>
+        <p className='mt-4 text-xl text-blue-700'>
+          Explore articles crafted for wisdom seekers.
+        </p>
+        <button
+          onClick={() => setOpen(true)}
+          className='mt-8 px-6 py-3 bg-blue-600 text-white rounded-full hover:bg-blue-700 transition-all duration-200'
+        >
+          Add New Post
+        </button>
+      </header>
+
+      {open && (
+        <Modal open={open} setOpen={setOpen}>
+          <Login />
+        </Modal>
+      )}
+
+      <div className='container mx-auto mt-10 space-y-16 px-4'>
+        <h2 className='text-3xl font-bold text-blue-900 text-center'>
+          Latest Articles
+        </h2>
+        {isLoading ? (
+          <ArticleLoader />
+        ) : (
+          data?.map((post: Post) => (
+            <Post key={post.id} post={post} isLoading={isLoading} />
+          ))
+        )}
       </div>
     </div>
   );
